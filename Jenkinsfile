@@ -8,10 +8,7 @@ pipeline {
         }
          stage('Build'){
              steps {
-                    sh '''
-                        docker build -t tensor-prediction .
-                        docker run -p 80:80 tensor-prediction
-                       '''
+                    sh 'pip install -r requirements.txt'
             }
         }
 
