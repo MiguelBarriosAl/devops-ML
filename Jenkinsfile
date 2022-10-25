@@ -6,6 +6,10 @@ pipeline {
                     git credentialsId: 'dev_ml', url: 'https://github.com/MiguelBarriosAl/Devops-ML.git'
             }
         }
+         stage('Initialize Docker'){
+            def dockerHome = tool 'Docker_Dev'
+            env.PATH = "${dockerHome}/bin:${env.PATH}"
+        }
          stage('Build'){
              steps {
                     sh '''
