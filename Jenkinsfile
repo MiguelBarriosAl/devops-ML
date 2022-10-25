@@ -1,16 +1,20 @@
 pipeline {
-    agent none
-    stages {
-        stage('Build') {
-            agent {
-                docker {
-                    image 'python'
-                }
-            }
-            steps {
-                sh 'python -m py_compile sources/add2vals.py sources/calc.py'
-                stash(name: 'compiled-results', includes: 'sources/*.py*')
+    agent any
+        stages {
+            stage('Clone Repository'){
+                steps {
+                    git credentialsId: 'dev_ml', url: 'https://github.com/MiguelBarriosAl/Devops-ML.git'
             }
         }
+         stage('Run Test'){
+             steps {
+                    sh '''
+                        pip install -r requirements.txt
+                        python -m unittest test/test_model_deployed.py
+                        python -m unittest test/test_heathcheck_api.py
+                       '''
+            }
+        }
+
     }
 }
