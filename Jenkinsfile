@@ -8,7 +8,7 @@ pipeline {
         }
          stage('Build'){
              steps {
-                    sh 'pip install -r requirements.txt'
+                    sh 'sudo apt install python3-pip && pip install -r requirements.txt'
             }
         }
 
