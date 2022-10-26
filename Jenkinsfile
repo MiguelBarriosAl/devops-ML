@@ -6,20 +6,15 @@ pipeline {
                     git credentialsId: 'dev_ml', url: 'https://github.com/MiguelBarriosAl/Devops-ML.git'
             }
         }
-         stage('Build Image'){
-             steps  {
-                    sh 'sudo docker build -t tensor-prediction:v1 .'
-            }
-        }
-        stage('Run Image') {
-            steps {
-                    sh 'sudo docker run -p 80:80 tensor-prediction'
-            }
-        }
         stage('Testing') {
             steps {
                 sh 'python -m unittest test/test_model_deployed.py'
                 sh 'python -m unittest test/test_heathcheck_api.py'
+            }
+        }
+        stage('Build Image'){
+             steps  {
+                    sh 'sudo docker build -t tensor-prediction:v1 .'
             }
         }
     }
