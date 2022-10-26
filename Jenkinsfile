@@ -1,20 +1,25 @@
 pipeline {
-    agent {
-            docker { image 'python:3.9-buster' }
-        }
+    agent any
         stages {
             stage('Clone Repository'){
                 steps {
                     git credentialsId: 'dev_ml', url: 'https://github.com/MiguelBarriosAl/Devops-ML.git'
             }
         }
-         stage('Run Test'){
-             steps {
-                    sh '''
-                        python -m pip install -r requirements.txt
-                       '''
+         stage('Build Image'){
+             steps  {
+                    sh 'sudo docker build -t tensor-prediction:v1 .'
             }
         }
-
+        stage('Run Image') {
+            steps {
+                    sh 'sudo docker run -p 80:80 tensor-prediction'
+            }
+        },
+        stage('Testing') {
+            steps {
+                echo 'Testing....'
+            }
+        }
     }
 }
