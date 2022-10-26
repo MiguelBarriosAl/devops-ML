@@ -10,8 +10,6 @@ pipeline {
              steps {
                     sh '''
                         pip install -r requirements.txt
-                        python -m unittest test/test_model_deployed.py
-                        python -m unittest test/test_heathcheck_api.py
                        '''
             }
         }
