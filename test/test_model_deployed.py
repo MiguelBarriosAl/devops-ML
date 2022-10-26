@@ -9,7 +9,7 @@ class TestModel(unittest.TestCase):
         # docker run -p 80:80 tensor-prediction
         data = {"tensor": [0, 1, 2]}
         headers = {"content-type": "application/json"}
-        response = requests.post(("http://localhost:80/predict"), json=data, headers=headers)
+        response = requests.post(("https://devops-ml-dev.herokuapp.com/predict"), json=data, headers=headers)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
 
