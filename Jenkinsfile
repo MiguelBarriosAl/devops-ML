@@ -8,12 +8,12 @@ pipeline {
         }
          stage('Build Image'){
              steps  {
-                    sh 'sudo docker build -t tensor-prediction:v1 .'
+                    sh 'docker build -t tensor-prediction:v1 .'
             }
         }
         stage('Run Image') {
             steps {
-                    sh 'sudo docker run -p 80:80 tensor-prediction'
+                    sh 'docker run -p 80:80 tensor-prediction'
             }
         }
         stage('Testing') {
