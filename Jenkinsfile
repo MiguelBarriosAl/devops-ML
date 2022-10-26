@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+            docker { image 'python:3.9-buster' }
+        }
         stages {
             stage('Clone Repository'){
                 steps {
@@ -9,7 +11,7 @@ pipeline {
          stage('Run Test'){
              steps {
                     sh '''
-                        pip install -r requirements.txt
+                        python -m pip install -r requirements.txt
                        '''
             }
         }
