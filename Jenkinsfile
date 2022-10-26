@@ -15,7 +15,7 @@ pipeline {
             steps {
                     sh 'sudo docker run -p 80:80 tensor-prediction'
             }
-        },
+        }
         stage('Testing') {
             steps {
                 echo 'Testing....'
