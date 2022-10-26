@@ -1,19 +1,14 @@
 pipeline {
-    agent any
-        stages {
-            stage('Clone Repository'){
-                steps {
-                    git credentialsId: 'dev_ml', url: 'https://github.com/MiguelBarriosAl/Devops-ML.git'
+    agent { docker { image 'python:3.9' } }
+    stages {
+        stage('Clone Repository'){
+            steps {
+                git credentialsId: 'dev_ml', url: 'https://github.com/MiguelBarriosAl/Devops-ML.git'
             }
         }
-        stage('Build') {
+        stage('Test'){
             steps {
-                sh 'sudo apt install python3-pip'
-            }
-        }
-        stage('Testing') {
-            steps {
-                sh 'python -m test/unittest'
+                sh 'python -m unittest '
             }
         }
         stage('Build And Push') {
