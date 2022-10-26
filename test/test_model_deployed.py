@@ -5,7 +5,7 @@ from fastapi import status
 
 class TestModel(unittest.TestCase):
 
-    def test_model_deployed(self):
+    def test_model_deployed_service(self):
         # docker run -p 80:80 tensor-prediction
         data = {"tensor": [0, 1, 2]}
         headers = {"content-type": "application/json"}

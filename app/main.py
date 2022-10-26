@@ -31,7 +31,7 @@ def home():
 
 @app.post("/predict", response_model=BaseModel)
 async def predict(tensor: TensorOut):
-    item = jsonable_encoder(tensor) # Se podría pasar directamente un array
+    item = jsonable_encoder(tensor)
     ts = torch.jit.load(str(BASE_DIR) + '/model/doubleit_model.pt')
     sample_tensor = torch.tensor(item['tensor'])
     tensor = ts(sample_tensor)
