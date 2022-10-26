@@ -13,7 +13,13 @@
 Automating machine learning processes through Jenkins and Docker
 
 # Requirements
-    scikit-learn==1.0.2
+    fastapi==0.85.1
+    torch==1.12.1
+    numpy==1.23.4
+    request==2.28.1
+
+    sudo su    
+    visudo -f /etc/sudoers
 
 # Create Git repo
 

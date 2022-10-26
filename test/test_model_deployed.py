@@ -12,5 +12,6 @@ class TestModel(unittest.TestCase):
         response = requests.post(("http://localhost:80/predict"), json=data, headers=headers)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
+
 if __name__ == '__main__':
     unittest.main()

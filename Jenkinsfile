@@ -8,17 +8,18 @@ pipeline {
         }
          stage('Build Image'){
              steps  {
-                    sh 'docker build -t tensor-prediction:v1 .'
+                    sh 'sudo docker build -t tensor-prediction:v1 .'
             }
         }
         stage('Run Image') {
             steps {
-                    sh 'docker run -p 80:80 tensor-prediction'
+                    sh 'sudo docker run -p 80:80 tensor-prediction'
             }
         }
         stage('Testing') {
             steps {
-                echo 'Testing....'
+                sh 'python -m unittest test/test_model_deployed.py'
+                sh 'python -m unittest test/test_heathcheck_api.py'
             }
         }
     }
