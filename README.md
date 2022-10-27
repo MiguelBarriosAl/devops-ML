@@ -33,7 +33,7 @@ This model returns a 1-dim tensor multiplied by 2.
     visudo -f /etc/sudoers
 
 # Services
-###**HealthCheck**
+###HealthCheck
 
     curl -X 'GET' \
       'https://devops-ml-dev.herokuapp.com/' \
@@ -47,7 +47,7 @@ This model returns a 1-dim tensor multiplied by 2.
       "Version": "0.1.0"
     }`
 
-###**Predict**
+###Predict
 
     curl -X 'POST' \
       'https://devops-ml-dev.herokuapp.com/predict' \
@@ -64,7 +64,7 @@ This model returns a 1-dim tensor multiplied by 2.
 
 `"{"tensor": [0, 2, 4]}"`
 
-###**Document FastApi**
+###Document FastApi
 
 `https://devops-ml-dev.herokuapp.com/docs`
 
